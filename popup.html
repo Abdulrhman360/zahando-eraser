@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Za Hando</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      width: 260px;
+      background: #050a14;
+      color: #fff;
+      font-family: Impact, 'Arial Black', sans-serif;
+      overflow: hidden;
+      position: relative;
+      user-select: none;
+    }
+
+    /* Subtle dot grid */
+    body::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background-image: radial-gradient(circle, rgba(41,128,255,0.07) 1px, transparent 1px);
+      background-size: 10px 10px;
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    .panel {
+      position: relative;
+      z-index: 1;
+      padding: 20px;
+    }
+
+    /* Title */
+    .title-block {
+      text-align: center;
+      margin-bottom: 18px;
+    }
+
+    .title {
+      font-size: 40px;
+      letter-spacing: 0.06em;
+      color: #fff;
+      line-height: 1;
+      text-shadow: 3px 3px 0 #1a4fa8, 6px 6px 0 rgba(26,79,168,0.35);
+    }
+
+    .title span { color: #4d9fff; }
+
+    .diamond-tag {
+      display: inline-block;
+      background: #1a4fa8;
+      color: #a8d0ff;
+      font-size: 8px;
+      letter-spacing: 0.15em;
+      padding: 3px 12px;
+      margin-top: 6px;
+      font-family: Arial, sans-serif;
+      clip-path: polygon(8px 0%, 100% 0%, calc(100% - 8px) 100%, 0% 100%);
+    }
+
+    hr {
+      border: none;
+      border-top: 1px solid #0d1f3c;
+      margin: 14px 0;
+    }
+
+    .toggle-wrap {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 12px;
+    }
+
+    #toggleBtn {
+      width: 100%;
+      padding: 16px 0;
+      border-radius: 4px;
+      font-family: Impact, 'Arial Black', sans-serif;
+      font-size: 20px;
+      letter-spacing: 0.1em;
+      cursor: pointer;
+      position: relative;
+      overflow: hidden;
+      transition: background 0.15s, color 0.15s, border-color 0.15s, box-shadow 0.15s;
+      background: #0a1628;
+      color: #2a4a70;
+      border: 2px solid #0d2044;
+    }
+
+    #toggleBtn:hover {
+      border-color: #1e4080;
+      color: #4d80c0;
+    }
+
+    #toggleBtn.active {
+      background: #020d1f;
+      color: #4d9fff;
+      border-color: #2980ff;
+      box-shadow: 0 0 20px rgba(41,128,255,0.4), inset 0 0 20px rgba(41,128,255,0.06);
+      animation: pulse-blue 1.5s infinite;
+    }
+
+    #toggleBtn:active { transform: scale(0.97); }
+
+    @keyframes pulse-blue {
+      0%,100% { box-shadow: 0 0 14px rgba(41,128,255,0.3), inset 0 0 14px rgba(41,128,255,0.05); }
+      50%      { box-shadow: 0 0 30px rgba(41,128,255,0.7), inset 0 0 28px rgba(41,128,255,0.12); }
+    }
+
+    .status {
+      font-size: 10px;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      font-family: Arial, sans-serif;
+    }
+
+    .status.off { color: #1a3050; }
+    .status.on  { color: #4d9fff; animation: blink 1s infinite; }
+
+    @keyframes blink {
+      0%,100% { opacity: 1; }
+      50%      { opacity: 0.35; }
+    }
+
+    .stats {
+      display: flex;
+      gap: 1px;
+      width: 100%;
+    }
+
+    .stat-box {
+      flex: 1;
+      background: #070f1e;
+      border: 1px solid #0d1f3c;
+      padding: 8px 0;
+      text-align: center;
+      border-radius: 2px;
+    }
+
+    .stat-n {
+      font-size: 22px;
+      color: #2980ff;
+      line-height: 1;
+    }
+
+    .stat-l {
+      font-size: 7px;
+      letter-spacing: 0.15em;
+      color: #1a3a60;
+      text-transform: uppercase;
+      margin-top: 2px;
+      font-family: Arial, sans-serif;
+    }
+
+    .footer {
+      margin-top: 16px;
+      text-align: center;
+      font-size: 8px;
+      letter-spacing: 0.15em;
+      color: #0d1f3c;
+      text-transform: uppercase;
+      font-family: Arial, sans-serif;
+    }
+  </style>
+</head>
+<body>
+<div class="panel">
+  <div class="title-block">
+    <div class="title">ZA <span>HANDO</span></div>
+    <div class="diamond-tag">◆ DIAMOND IS UNBREAKABLE ◆</div>
+  </div>
+
+  <hr>
+
+  <div class="toggle-wrap">
+    <button id="toggleBtn">✋&nbsp; ACTIVATE STAND</button>
+    <div class="status off" id="statusLabel">● STAND DORMANT</div>
+
+    <div class="stats">
+      <div class="stat-box">
+        <div class="stat-n" id="totalCount">0</div>
+        <div class="stat-l">Total Erased</div>
+      </div>
+      <div class="stat-box">
+        <div class="stat-n" id="sessionCount">0</div>
+        <div class="stat-l">This Session</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="footer">Click to erase existence</div>
+</div>
+<script src="popup.js"></script>
+</body>
+</html>
