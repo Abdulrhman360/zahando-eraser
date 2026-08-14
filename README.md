@@ -23,8 +23,7 @@ Inspired by the power of **The Hand** from *JoJo's Bizarre Adventure*, Zahando E
 1. Activate Zahando Eraser
 2. Hover over any element on a webpage
 3. Click the element you want to remove
-4. **ZA HANDO!** 🖐️
-5. The element disappears
+4. The element disappears
 
 ## Installation
 
